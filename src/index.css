@@ -215,7 +215,7 @@ footer {
 
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 8vw, 7.2rem);
+  font-size: clamp(2.2rem, 8vw, 7.5rem);
   font-weight: 800;
   line-height: 0.93;
   letter-spacing: -0.025em;
