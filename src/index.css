@@ -215,11 +215,12 @@ footer {
 
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 14vw, 7.5rem);
+  font-size: clamp(2.2rem, 8vw, 7.2rem);
   font-weight: 800;
   line-height: 0.93;
   letter-spacing: -0.025em;
   margin-bottom: 1.25rem;
+  word-break: break-word;
 }
 
 .hero-name__line1 { display: block; color: var(--text); }
@@ -358,14 +359,13 @@ footer {
 /* ── STATS ── */
 .stats-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 130px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  column-gap: 1px;
+  row-gap: 0;
   background: var(--border);
   border: 1px solid var(--border);
   border-radius: 20px;
   overflow: hidden;
-  column-gap: 130px;
-  row-gap: 50px;
 }
 
 .stat-cell {
@@ -512,7 +512,7 @@ footer {
 /* ── PROJECTS ── */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 1.25rem;
 }
 
@@ -562,7 +562,7 @@ footer {
 /* ── SKILLS ── */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 1.25rem;
 }
 
@@ -693,7 +693,7 @@ footer {
 
 .edu-degree {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
 }
@@ -745,17 +745,83 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  :root { --section-py: 4rem; }
+  :root { --section-py: 3.5rem; }
+
+  /* Nav */
+  .nav { padding: 0 1rem; height: 58px; }
   .nav-links { display: none; }
-  .nav { padding: 0 1rem; }
-  .nav-links { gap: 1.25rem; }
-  .about-grid { grid-template-columns: 1fr; }
-  .exp-top { flex-direction: column; }
-  .exp-meta { align-items: flex-start; }
-  .hero { padding: 80px 1rem 3rem; }
+
+  /* Hero — fix name overflow and pill sizes */
+  .hero { padding: 70px 1rem 3rem; }
+  .hero-name { font-size: clamp(2.6rem, 13vw, 4rem); }
+  .hero-tagline { font-size: 1rem; }
+  .role-pill { font-size: 12px; padding: 0.25rem 0.65rem; }
+  .btn { font-size: 13px; padding: 0.65rem 1.2rem; }
+  .award-banner { font-size: 12px; padding: 0.6rem 1rem; width: 100%; }
+
+  /* Section */
   .section { padding: var(--section-py) 1rem; }
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .section-title { font-size: 1.6rem; }
+
+  /* About */
+  .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .about-text { font-size: 15px; }
+  .info-row { font-size: 14px; }
+  .info-val { font-size: 13px; max-width: 55%; text-align: right; }
+
+  /* Stats — 2 cols, no gap between rows */
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1px;
+    row-gap: 0;
+  }
+  .stat-cell { padding: 1.25rem 1rem; }
+  .stat-value { font-size: 1.75rem; }
+  .stat-label { font-size: 9px; }
+
+  /* Experience */
+  .exp-top { flex-direction: column; gap: 0.4rem; }
+  .exp-meta { align-items: flex-start; }
+  .exp-company { font-size: 12px; }
+  .exp-role { font-size: 1rem; }
+  .exp-bullets li { font-size: 14px; line-height: 1.55; }
+  .exp-card { border-radius: 12px; }
+
+  /* Projects — single column */
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-desc { font-size: 14px; }
+  .project-title { font-size: 1.1rem; }
+
+  /* Skills — single column on small phones */
+  .skills-grid { grid-template-columns: 1fr; }
+  .skill-group-title { font-size: 12px; }
+  .tag { font-size: 12px; }
+
+  /* Contact */
+  .contact-intro { font-size: 15px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-label { font-size: 11px; }
+  .contact-value { font-size: 14px; }
+
+  /* Education */
+  .edu-top { flex-direction: column; gap: 0.4rem; }
+  .edu-meta { align-items: flex-start; }
+  .edu-school { font-size: 12px; }
+  .edu-degree { font-size: 1rem; }
+  .edu-meta { font-size: 12px; }
+  .edu-course { font-size: 11px; }
+
+  /* Cert */
+  .cert-row { font-size: 14px; flex-wrap: wrap; gap: 0.25rem; }
+  .cert-provider { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .hero-name { font-size: clamp(2.4rem, 14vw, 3.5rem); }
+  .hero-cta { flex-direction: column; }
+  .btn { width: 100%; justify-content: center; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 1.4rem; white-space: normal; }
 }
 
 
@@ -775,12 +841,12 @@ footer {
 .award-banner { font-size: 13px; padding: 0.75rem 1.4rem; }
 
 
-.exp-card, .project-card, .skill-group, .stat-cell {
+.skill-group, .stat-cell {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.exp-card.visible, .project-card.visible, .skill-group.visible, .stat-cell.visible {
+.skill-group.visible, .stat-cell.visible {
   opacity: 1;
   transform: translateY(0);
 }
